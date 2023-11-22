@@ -2,25 +2,22 @@ package com.codecool.dungeoncrawl.ui.keyeventhandler;
 
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Actor;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+
+import java.util.Set;
 
 public class Right implements KeyHandler {
     public static final KeyCode code = KeyCode.RIGHT;
 
-    @Override
     public void perform(KeyEvent event, GameMap map) {
-        if(code.equals(event.getCode())){
-            if(checkMovementDirection(event,map)){
-                map.getPlayer().move(1, 0);
-            } else {
-                System.out.println("Balls to the walls");
+        if (code.equals(event.getCode())) {
+            map.getPlayer().move(1, 0);
+            Set<Actor> skeletons = map.getSkeletons();
+            for (Actor skeleton : skeletons) {
+                skeleton.moveRandomDirection();
             }
         }
-    }
-
-    @Override
-    public Boolean checkMovementDirection(KeyEvent event, GameMap map){
-        return map.getCell(map.getPlayer().getX() + 1, map.getPlayer().getY()).getType() == CellType.FLOOR;
     }
 }
