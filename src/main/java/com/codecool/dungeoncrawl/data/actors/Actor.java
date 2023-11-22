@@ -24,6 +24,19 @@ public abstract class Actor implements Drawable {
         }
     }
 
+    public void attackNearbyActor(){
+        Cell[] neighborCells = new Cell[4];
+        neighborCells[0] = cell.getNeighbor(0,1);
+        neighborCells[1] = cell.getNeighbor(0,-1);
+        neighborCells[2] = cell.getNeighbor(1,0);
+        neighborCells[3] = cell.getNeighbor(-1,0);
+        for(Cell cell : neighborCells){
+            if(cell.getActor()!=null){
+
+            }
+        }
+    }
+
     public int getHealth() {
         return health;
     }

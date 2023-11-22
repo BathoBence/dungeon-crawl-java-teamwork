@@ -8,7 +8,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.Set;
 
-public class Left implements KeyHandler, MovementHandler {
+public class Left implements KeyHandler {
     public static final KeyCode code = KeyCode.LEFT;
 
     public void moveSkeleton(GameMap map){
