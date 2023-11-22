@@ -8,7 +8,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.Set;
 
-public class Up implements KeyHandler {
+public class Up implements KeyHandler, MovementHandler {
     public static final KeyCode code = KeyCode.UP;
 
     public void perform(KeyEvent event, GameMap map) {

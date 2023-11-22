@@ -8,7 +8,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.Set;
 
-public class Down implements KeyHandler {
+public class Down implements KeyHandler, MovementHandler {
     public static final KeyCode code = KeyCode.DOWN;
 
     @Override
