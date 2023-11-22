@@ -5,7 +5,7 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class Right implements KeyHandler {
+public class Right implements KeyHandler, MovementHandler {
     public static final KeyCode code = KeyCode.RIGHT;
 
     @Override
@@ -21,6 +21,7 @@ public class Right implements KeyHandler {
 
     @Override
     public Boolean checkMovementDirection(KeyEvent event, GameMap map){
-        return map.getCell(map.getPlayer().getX() + 1, map.getPlayer().getY()).getType() == CellType.FLOOR;
+        CellType currentCell = map.getCell(map.getPlayer().getX() + 1, map.getPlayer().getY()).getType();
+        return currentCell == CellType.FLOOR || currentCell == CellType.POTION;
     }
 }
