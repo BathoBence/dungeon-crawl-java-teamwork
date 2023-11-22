@@ -13,6 +13,14 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
+
+    public static void changeMaps(int nextMapIndex) {
+
+        GameMap newMap = MapLoader.loadMap(nextMapIndex);
+
+
+        System.out.println("Transitioned to a new map");
+    }
     public static GameMap loadMap(int currentMap) {
 
         String[] maps = new String[]{"/map.txt","/shop.txt"};
