@@ -1,6 +1,11 @@
 package com.codecool.dungeoncrawl.data;
 
+import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.actors.Skeleton;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class GameMap {
     private int width;
@@ -38,5 +43,18 @@ public class GameMap {
 
     public int getHeight() {
         return height;
+    }
+
+    public Set<Actor> getSkeletons(){
+        Set<Actor> skeletons = new HashSet<>();
+        for(int x = 0; x < width; x++){
+            for(int y = 0; y < height; y++){
+                Cell cell = getCell(x,y);
+                if(cell.getActor()!= null && cell.getActor().getTileName().equals("skeleton")){
+                    skeletons.add(cell.getActor());
+                }
+            }
+        }
+        return skeletons;
     }
 }
