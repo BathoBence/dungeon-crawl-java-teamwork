@@ -21,6 +21,6 @@ public class Down implements KeyHandler, MovementHandler {
     @Override
     public Boolean checkMovementDirection(KeyEvent event, GameMap map){
         CellType currentCell = map.getCell(map.getPlayer().getX(), map.getPlayer().getY() + 1).getType();
-        return currentCell == CellType.FLOOR || currentCell == CellType.POTION;
+        return currentCell == CellType.FLOOR || currentCell == CellType.POTION || currentCell == CellType.DOOR;
     }
 }

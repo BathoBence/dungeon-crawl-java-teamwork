@@ -22,6 +22,7 @@ public class Right implements KeyHandler, MovementHandler {
     @Override
     public Boolean checkMovementDirection(KeyEvent event, GameMap map){
         CellType currentCell = map.getCell(map.getPlayer().getX() + 1, map.getPlayer().getY()).getType();
-        return currentCell == CellType.FLOOR || currentCell == CellType.POTION;
+        return currentCell == CellType.FLOOR || currentCell == CellType.POTION || currentCell == CellType.DOOR;
+
     }
 }

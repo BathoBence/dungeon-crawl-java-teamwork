@@ -1,7 +1,13 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.data.items.Potion;
+import com.codecool.dungeoncrawl.logic.GameLogic;
+import javafx.scene.input.KeyCode;
+
+import java.awt.event.KeyEvent;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
@@ -34,4 +40,9 @@ public abstract class Actor implements Drawable {
     public int getY() {
         return cell.getY();
     }
+
+    public void increaseHealth(int bonusHealth) {
+        this.health = health + bonusHealth;
+    }
+
 }
