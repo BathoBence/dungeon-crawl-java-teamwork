@@ -45,6 +45,7 @@ public class GameMap {
         return height;
     }
 
+
     public Set<Actor> getSkeletons(){
         Set<Actor> skeletons = new HashSet<>();
         for(int x = 0; x < width; x++){
