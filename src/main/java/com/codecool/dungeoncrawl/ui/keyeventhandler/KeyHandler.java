@@ -5,5 +5,4 @@ import javafx.scene.input.KeyEvent;
 
 public interface KeyHandler {
     void perform(KeyEvent event, GameMap map);
-
 }

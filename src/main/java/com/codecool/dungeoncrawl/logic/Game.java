@@ -25,5 +25,18 @@ public class Game extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
+        setTimeout(() -> System.out.println("test"), 1000);
+    }
+
+    public static void setTimeout(Runnable runnable, int delay){
+        new Thread(() -> {
+            try {
+                Thread.sleep(delay);
+                runnable.run();
+            }
+            catch (Exception e){
+                System.err.println(e);
+            }
+        }).start();
     }
 }

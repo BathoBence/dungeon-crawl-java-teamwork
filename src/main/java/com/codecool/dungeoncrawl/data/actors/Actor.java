@@ -9,6 +9,8 @@ import javafx.scene.input.KeyCode;
 
 import java.awt.event.KeyEvent;
 
+import java.util.Random;
+
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
@@ -20,9 +22,11 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        cell.setActor(null);
-        nextCell.setActor(this);
-        cell = nextCell;
+        if(nextCell.getType() != CellType.WALL && nextCell.getActor()== null){
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
     }
 
     public int getHealth() {
@@ -45,4 +49,26 @@ public abstract class Actor implements Drawable {
         this.health = health + bonusHealth;
     }
 
+    public void moveRandomDirection(){
+        Random random = new Random();
+        int randomInt = random.nextInt(4);
+        switch (randomInt+1){
+            case 1:
+                //Up
+                this.move(0,-1);
+                break;
+            case 2:
+                //Down
+                this.move(0,1);
+                break;
+            case 3:
+                //Right
+                this.move(1,0);
+                break;
+            case 4:
+                //Left
+                this.move(-1,0);
+                break;
+        }
+    };
 }
