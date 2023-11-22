@@ -11,4 +11,5 @@ public class Potion extends Item{
     public String getTileName() {
         return "potion";
     }
+
 }
