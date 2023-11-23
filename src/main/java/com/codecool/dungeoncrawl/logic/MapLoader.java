@@ -6,30 +6,23 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Merchant;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.data.items.Armor;
 import com.codecool.dungeoncrawl.data.items.Door;
 import com.codecool.dungeoncrawl.data.items.Potion;
+import com.codecool.dungeoncrawl.data.items.Weapon;
+import com.codecool.dungeoncrawl.ui.elements.MainStage;
 
 import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
 
-    static boolean isPlayerInMap = true;
-
-    public static GameMap loadMap() {
-
-        isPlayerInMap = !isPlayerInMap;
-
-        String[] maps = new String[]{"/map.txt","/shop.txt"};
-        InputStream is;
 
 
+    public static GameMap loadMap(String path) {
 
-        if (isPlayerInMap) {
-            is = MapLoader.class.getResourceAsStream(maps[1]);
-        } else {
-             is = MapLoader.class.getResourceAsStream(maps[0]);
-        }
+        InputStream is = MapLoader.class.getResourceAsStream(path);
+
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
@@ -74,6 +67,14 @@ public class MapLoader {
                             break;
                         case ',':
                             cell.setType(CellType.SHOPFLOOR);
+                            break;
+                        case 'A':
+                            cell.setType(CellType.ARMOR);
+                            new Armor(cell);
+                            break;
+                        case 'W':
+                            cell.setType(CellType.WEAPON);
+                            new Weapon(cell);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
