@@ -29,4 +29,9 @@ public class MainStage {
     public void setHealthLabelText(String text) {
         this.statusPane.setHealthValue(text);
     }
+
+    public void setGoldLabelText(String text) {
+        this.statusPane.setGoldValue(text);
+    }
+
 }
