@@ -30,10 +30,21 @@ public class Tiles {
         tileMap.put("skeleton", new Tile(29, 6));
         tileMap.put("potion", new Tile(23,23));
         tileMap.put("door", new Tile(6,5));
+        tileMap.put("merchant", new Tile(24, 2));
+        tileMap.put("quest-icon", new Tile(20, 25));
+        tileMap.put("shop-floor", new Tile(16, 0));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
         Tile tile = tileMap.get(d.getTileName());
+        context.drawImage(tileset, tile.x, tile.y, tile.w, tile.h,
+                x * TILE_WIDTH, y * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
+    }
+
+    public static void drawTile(GraphicsContext context, String s, int x, int y) {
+        Tile tile = tileMap.get(s);
+        System.out.println(x);
+        System.out.println(y);
         context.drawImage(tileset, tile.x, tile.y, tile.w, tile.h,
                 x * TILE_WIDTH, y * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
     }

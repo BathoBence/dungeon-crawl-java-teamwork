@@ -1,15 +1,15 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.GameMap;
 
-public class Player extends Actor {
+public class Merchant extends Actor{
 
-    public Player(Cell cell) {
+    public Merchant(Cell cell) {
         super(cell);
     }
 
+    @Override
     public String getTileName() {
-        return "player";
+        return "merchant";
     }
 }

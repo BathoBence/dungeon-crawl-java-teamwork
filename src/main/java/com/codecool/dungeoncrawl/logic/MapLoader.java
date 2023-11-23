@@ -3,10 +3,10 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Merchant;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.data.items.Door;
-import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.Potion;
 
 import java.io.InputStream;
@@ -14,22 +14,27 @@ import java.util.Scanner;
 
 public class MapLoader {
 
-    public static void changeMaps(int nextMapIndex) {
+    static boolean isPlayerInMap = true;
 
-        GameMap newMap = MapLoader.loadMap(nextMapIndex);
+    public static GameMap loadMap() {
 
-
-        System.out.println("Transitioned to a new map");
-    }
-    public static GameMap loadMap(int currentMap) {
+        isPlayerInMap = !isPlayerInMap;
 
         String[] maps = new String[]{"/map.txt","/shop.txt"};
-        InputStream is = MapLoader.class.getResourceAsStream(maps[currentMap]);
+        InputStream is;
+
+
+
+        if (isPlayerInMap) {
+            is = MapLoader.class.getResourceAsStream(maps[1]);
+        } else {
+             is = MapLoader.class.getResourceAsStream(maps[0]);
+        }
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 
-        scanner.nextLine(); // empty line
+        scanner.nextLine();
 
         GameMap map = new GameMap(width, height, CellType.EMPTY);
         for (int y = 0; y < height; y++) {
@@ -62,6 +67,13 @@ public class MapLoader {
                         case 'D':
                             cell.setType(CellType.DOOR);
                             new Door(cell);
+                            break;
+                        case 'M':
+                            cell.setType(CellType.FLOOR);
+                            new Merchant(cell);
+                            break;
+                        case ',':
+                            cell.setType(CellType.SHOPFLOOR);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

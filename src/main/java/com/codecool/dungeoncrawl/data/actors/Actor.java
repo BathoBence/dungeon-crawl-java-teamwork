@@ -14,7 +14,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public abstract class Actor implements Drawable {
-    AudioClip moveSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/move.mp3")).toExternalForm());
     private Cell cell;
     private int health = 10;
 
@@ -30,12 +29,6 @@ public abstract class Actor implements Drawable {
         if(nextCell.getType() != CellType.WALL && nextCell.getActor() == null){
             cell.setActor(null);
             nextCell.setActor(this);
-            if (nextCell.getActor().getTileName().equals("player")) {
-                moveSound.setVolume(0.8);
-                    moveSound.play();
-
-
-            }
             cell = nextCell;
         }
     }
@@ -63,6 +56,15 @@ public abstract class Actor implements Drawable {
     public void increaseHealth(int bonusHealth) {
         this.health = health + bonusHealth;
     }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
     public void increaseGold(int bonusGold) {
         this.gold = gold + bonusGold;
     }

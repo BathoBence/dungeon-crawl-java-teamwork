@@ -7,6 +7,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.util.Objects;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Game extends Application {
@@ -20,15 +21,16 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name to start your adventure!");
+        String playerName = scanner.nextLine();
         this.keyHandlers = Set.of(new Up(), new Down(), new Left(), new Right(), new Space());
         this.logic = new GameLogic();
-        this.ui = new UI(logic, keyHandlers);
+        this.ui = new UI(logic, keyHandlers, playerName);
         ui.setUpPain(primaryStage);
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
-
-        setTimeout(() -> System.out.println("test"), 1000);
     }
 
     public static void setTimeout(Runnable runnable, int delay){

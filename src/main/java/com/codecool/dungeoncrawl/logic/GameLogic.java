@@ -2,16 +2,22 @@ package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class GameLogic {
     private GameMap map;
 
     public GameLogic() {
-        this.map = MapLoader.loadMap(0);
+        this.map = MapLoader.loadMap();
     }
 
-    public void setMap(GameMap map) {
-        this.map = map  ;
+    public void setMap() {
+        String playerGold = getPlayerGold();
+         String playerHealth = getPlayerHealth();
+        this.map = MapLoader.loadMap();
+        map.getPlayer().setHealth(Integer.parseInt(playerHealth));
+        map.getPlayer().setGold(Integer.parseInt(playerGold));
     }
 
     public double getMapWidth() {

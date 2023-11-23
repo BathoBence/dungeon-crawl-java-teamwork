@@ -21,11 +21,9 @@ public class MainStage {
         Scene scene = new Scene(borderPane);
         return scene;
     }
-
     public Scene getScene() {
         return scene;
     }
-
     public void setHealthLabelText(String text) {
         this.statusPane.setHealthValue(text);
     }
@@ -34,4 +32,7 @@ public class MainStage {
         this.statusPane.setGoldValue(text);
     }
 
+    public void setPlayerNameText(String playerName) {
+        this.statusPane.setPlayerName(playerName);
+    }
 }
