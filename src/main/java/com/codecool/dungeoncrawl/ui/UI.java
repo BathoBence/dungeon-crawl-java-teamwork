@@ -69,7 +69,7 @@ public class UI {
                     }
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else {
-                    if (cell.getType().getTileName().equalsIgnoreCase("weapon")){
+                    if (cell.getType().getTileName().equalsIgnoreCase("weapon") ||cell.getType().getTileName().equalsIgnoreCase("armor")){
                         Tiles.drawTile(context,"gold",x, y - 1);
                         System.out.println("hi gold");
                     }
