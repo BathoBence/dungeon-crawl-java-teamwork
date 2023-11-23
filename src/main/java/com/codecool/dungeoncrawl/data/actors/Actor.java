@@ -6,14 +6,19 @@ import com.codecool.dungeoncrawl.data.Drawable;
 import com.codecool.dungeoncrawl.data.items.Potion;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import javafx.scene.input.KeyCode;
+import javafx.scene.media.AudioClip;
 
 import java.awt.event.KeyEvent;
 
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class Actor implements Drawable {
+    AudioClip moveSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/move.mp3")).toExternalForm());
     private Cell cell;
     private int health = 10;
+
+    private int gold = 0;
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -22,15 +27,25 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if(nextCell.getType() != CellType.WALL && nextCell.getActor()== null){
+        if(nextCell.getType() != CellType.WALL && nextCell.getActor() == null){
             cell.setActor(null);
             nextCell.setActor(this);
+            if (nextCell.getActor().getTileName().equals("player")) {
+                moveSound.setVolume(0.8);
+                    moveSound.play();
+
+
+            }
             cell = nextCell;
         }
     }
 
     public int getHealth() {
         return health;
+    }
+
+    public int getGold() {
+        return gold;
     }
 
     public Cell getCell() {
@@ -47,6 +62,9 @@ public abstract class Actor implements Drawable {
 
     public void increaseHealth(int bonusHealth) {
         this.health = health + bonusHealth;
+    }
+    public void increaseGold(int bonusGold) {
+        this.gold = gold + bonusGold;
     }
 
     public void moveRandomDirection(){
