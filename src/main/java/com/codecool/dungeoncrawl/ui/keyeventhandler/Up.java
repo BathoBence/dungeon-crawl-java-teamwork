@@ -19,6 +19,7 @@ public class Up implements KeyHandler {
             logic.getMap().getPlayer().move(0, -1);
             logic.getMap().getPlayer().attack();
             Set<Actor> skeletons = logic.getMap().getSkeletons();
+            Actor boss = logic.getMap().getBoss();
             for (Actor skeleton : skeletons) {
                 skeleton.moveRandomDirection(logic.getMap().getPlayer());
             }

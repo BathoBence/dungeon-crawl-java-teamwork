@@ -19,6 +19,8 @@ public abstract class Actor implements Drawable {
 
     private int gold = 0;
 
+    private boolean enemy = true;
+
     public Actor(Cell cell) {
         this.cell = cell;
         this.cell.setActor(this);
@@ -31,6 +33,13 @@ public abstract class Actor implements Drawable {
             nextCell.setActor(this);
             cell = nextCell;
         }
+    }
+
+    public void setFriendly(){
+        this.enemy = false;
+    }
+    public boolean isEnemy(){
+        return enemy;
     }
 
     public void setHealth(int health){
@@ -61,9 +70,6 @@ public abstract class Actor implements Drawable {
         this.health = health + bonusHealth;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
 
     public void setGold(int gold) {
         this.gold = gold;

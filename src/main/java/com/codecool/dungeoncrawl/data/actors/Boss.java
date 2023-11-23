@@ -11,4 +11,8 @@ public class Boss extends Actor{
     public String getTileName() {
         return "boss";
     }
+
+    public void attackBack(Actor player){
+        player.takingDamage(3);
+    }
 }
