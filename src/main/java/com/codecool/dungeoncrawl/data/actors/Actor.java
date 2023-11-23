@@ -42,6 +42,10 @@ public abstract class Actor implements Drawable {
         }
     }
 
+    public void setHealth(int health){
+        this.health = health;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -71,7 +75,7 @@ public abstract class Actor implements Drawable {
         if(this.health <=0){
             this.getCell().setActor(null);
             this.getCell().setType(CellType.CORPSE);
-            return health;
+            return 0;
         }
         return health;
     }

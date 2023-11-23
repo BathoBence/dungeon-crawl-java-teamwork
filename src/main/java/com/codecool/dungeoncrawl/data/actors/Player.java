@@ -23,7 +23,7 @@ public class Player extends Actor {
             for(Actor enemy : enemies){
                 System.out.println(enemy.getTileName());
                 System.out.println(enemy.getHealth());
-                if(enemy.takingDamage(5)==0);{
+                if(enemy.takingDamage(5)<1);{
                     this.increaseGold(random.nextInt(5));
                 }
                 System.out.println(enemy.getHealth());
