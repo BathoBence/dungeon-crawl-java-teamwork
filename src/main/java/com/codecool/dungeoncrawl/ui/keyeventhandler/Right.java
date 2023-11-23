@@ -16,9 +16,10 @@ public class Right implements KeyHandler {
     public void perform(KeyEvent event, GameLogic logic) {
         if (code.equals(event.getCode())) {
             logic.getMap().getPlayer().move(1, 0);
+            logic.getMap().getPlayer().attack();
             Set<Actor> skeletons = logic.getMap().getSkeletons();
             for (Actor skeleton : skeletons) {
-                skeleton.moveRandomDirection();
+                skeleton.moveRandomDirection(logic.getMap().getPlayer());
             }
         }
     }
