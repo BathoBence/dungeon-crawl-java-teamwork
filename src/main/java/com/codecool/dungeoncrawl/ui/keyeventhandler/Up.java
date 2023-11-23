@@ -3,21 +3,24 @@ package com.codecool.dungeoncrawl.ui.keyeventhandler;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.Set;
 
-public class Up implements KeyHandler{
+public class Up implements KeyHandler {
     public static final KeyCode code = KeyCode.UP;
 
-    public void perform(KeyEvent event, GameMap map) {
+
+    @Override
+    public void perform(KeyEvent event, GameLogic logic) {
         if (code.equals(event.getCode())) {
-            map.getPlayer().move(0, -1);
-            map.getPlayer().attack();
-            Set<Actor> skeletons = map.getSkeletons();
+            logic.getMap().getPlayer().move(0, -1);
+            logic.getMap().getPlayer().attack();
+            Set<Actor> skeletons = logic.getMap().getSkeletons();
             for (Actor skeleton : skeletons) {
-                skeleton.moveRandomDirection(map.getPlayer());
+                skeleton.moveRandomDirection(logic.getMap().getPlayer());
             }
         }
     }

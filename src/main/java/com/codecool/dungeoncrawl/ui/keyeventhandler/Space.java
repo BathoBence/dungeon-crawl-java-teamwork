@@ -15,18 +15,19 @@ public class Space implements KeyHandler {
     public static final KeyCode code = KeyCode.SPACE;
 
     @Override
-    public void perform(KeyEvent event, GameMap map) {
+    public void perform(KeyEvent event, GameLogic logic) {
         if (code.equals(event.getCode())){
-            if (map.getPlayer().getCell().getType() == CellType.POTION) {
-                map.getPlayer().increaseHealth(10);
-                map.getPlayer().increaseGold(10);
+            if (logic.getMap().getPlayer().getCell().getType() == CellType.POTION) {
+                logic.getMap().getPlayer().increaseHealth(10);
+
+                logic.getMap().getPlayer().increaseGold(10);
                 AudioClip potionSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/potion.mp3")).toExternalForm());
                 potionSound.play();
                 System.out.println("potion");
-                map.getPlayer().getCell().setType(CellType.FLOOR);
+                logic.getMap().getPlayer().getCell().setType(CellType.FLOOR);
             }
-            else if (map.getPlayer().getCell().getType() == CellType.DOOR) {
-                    MapLoader.changeMaps(1);
+            else if (logic.getMap().getPlayer().getCell().getType() == CellType.DOOR) {
+                    logic.setMap();
                 System.out.println("hi");
                 }
             }
