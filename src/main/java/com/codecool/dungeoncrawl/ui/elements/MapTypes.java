@@ -6,7 +6,11 @@ public enum MapTypes {
             "If you feel too weak, earn\n" +
             "gold from monsters and buy\n" +
             "items from the merchant!"),
-    SHOP("/shop.txt","Each item costs 50 Gold.");
+    SHOP("/shop.txt","Finally a friendly face... \n" +
+            "The merchant welcomes you.\n" +
+            "Each item costs 50 Gold!\n" +
+            "You can buy armor for HP\n" +
+            "multiple times! \n");
     private final String path;
     private final String label;
 

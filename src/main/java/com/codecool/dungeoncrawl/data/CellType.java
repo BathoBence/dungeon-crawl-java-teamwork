@@ -10,7 +10,8 @@ public enum CellType {
     WARNING("!"),
     CORPSE("corpse"),
     ARMOR("armor"),
-    WEAPON("weapon");
+    WEAPON("weapon"),
+    HOLE("hole");
 
 
     private final String tileName;

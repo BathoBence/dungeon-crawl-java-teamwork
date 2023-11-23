@@ -15,6 +15,8 @@ import java.util.Objects;
 public class Space implements KeyHandler {
     public static final KeyCode code = KeyCode.SPACE;
 
+    AudioClip itemSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/buy-item.mp3")).toExternalForm());
+
     @Override
     public void perform(KeyEvent event, GameLogic logic) {
         if (code.equals(event.getCode())) {
@@ -31,12 +33,14 @@ public class Space implements KeyHandler {
             } else if (logic.getMap().getPlayer().getCell().getType() == CellType.WEAPON) {
                 if (logic.getMap().getPlayer().getGold() > 50) {
                     logic.getMap().getPlayer().equipWeapon();
+                    itemSound.play();
                     logic.getMap().getPlayer().removeGold(50);
                 }
 
             }
             else if (logic.getMap().getPlayer().getCell().getType() == CellType.ARMOR) {
                 if (logic.getMap().getPlayer().getGold() > 50) {
+                    itemSound.play();
                     logic.getMap().getPlayer().equipArmor();
                     logic.getMap().getPlayer().increaseHealth(30);
                     System.out.println(logic.getMap().getPlayer().isArmorEquipped());

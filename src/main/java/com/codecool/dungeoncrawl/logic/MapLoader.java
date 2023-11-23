@@ -3,10 +3,7 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
-import com.codecool.dungeoncrawl.data.actors.Boss;
-import com.codecool.dungeoncrawl.data.actors.Merchant;
-import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.data.actors.*;
 import com.codecool.dungeoncrawl.data.items.Armor;
 import com.codecool.dungeoncrawl.data.items.Door;
 import com.codecool.dungeoncrawl.data.items.Item;
@@ -84,6 +81,13 @@ public class MapLoader {
                         case 'W':
                             cell.setType(CellType.WEAPON);
                             new Weapon(cell);
+                            break;
+                        case 'C':
+                            cell.setType(CellType.SHOPFLOOR);
+                            new Cat(cell);
+                            break;
+                        case 'H':
+                            cell.setType(CellType.HOLE);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

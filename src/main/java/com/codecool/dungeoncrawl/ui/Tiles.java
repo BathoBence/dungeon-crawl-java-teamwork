@@ -27,9 +27,9 @@ public class Tiles {
         tileMap.put("wall", new Tile(10, 17));
         tileMap.put("floor", new Tile(2, 0));
         tileMap.put("player", new Tile(25, 0));
-        tileMap.put("player2", new Tile(27,0));
-        tileMap.put("player3", new Tile(30,0));
-        tileMap.put("player4", new Tile(28,0));
+        tileMap.put("playerWithWeapon", new Tile(27,0));
+        tileMap.put("playerWithArmor", new Tile(30,0));
+        tileMap.put("playerFullyEquipped", new Tile(28,0));
         tileMap.put("skeleton", new Tile(29, 6));
         tileMap.put("potion", new Tile(23,23));
         tileMap.put("door", new Tile(6,5));
@@ -42,6 +42,8 @@ public class Tiles {
         tileMap.put("armor", new Tile(2,22));
         tileMap.put("weapon", new Tile(0,30));
         tileMap.put("gold", new Tile(9,25));
+        tileMap.put("cat", new Tile(30,7));
+        tileMap.put("hole", new Tile(13,17));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
