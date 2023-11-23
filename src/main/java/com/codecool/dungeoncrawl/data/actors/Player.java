@@ -41,19 +41,21 @@ public class Player extends Actor {
     }
 
     public void attack(){
-        if(this.getTileName().equals("player")){
-            Random random = new Random();
-            List<Actor> enemies = searchNeighbourCells(this.getCell());
-            for(Actor enemy : enemies){
-                int remainingHP = enemy.takingDamage(5);
-                if(enemy.getTileName().equals("boss")){
-                    Boss boss = enemy instanceof Boss ? ((Boss) enemy) : null;
-                    assert boss != null;
-                    boss.attackBack(this);
-                }
-                if(remainingHP<1);{
-                    this.increaseGold(random.nextInt(5));
-                }
+        Random random = new Random();
+        List<Actor> enemies = searchNeighbourCells(this.getCell());
+        int playerDamage = 5;
+        if(this.isWeaponEquipped){
+            playerDamage = 10;
+        }
+        for(Actor enemy : enemies){
+            int remainingHP = enemy.takingDamage(playerDamage);
+            if(enemy.getTileName().equals("boss")){
+                Boss boss = enemy instanceof Boss ? ((Boss) enemy) : null;
+                assert boss != null;
+                boss.attackBack(this);
+            }
+            if(remainingHP<1);{
+                this.increaseGold(random.nextInt(5));
             }
         }
     }

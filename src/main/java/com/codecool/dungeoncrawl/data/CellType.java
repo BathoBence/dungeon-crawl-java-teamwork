@@ -8,7 +8,6 @@ public enum CellType {
     DOOR("door"),
     SHOPFLOOR("shop-floor"),
     WARNING("!"),
-    CORPSE("corpse");
     CORPSE("corpse"),
     ARMOR("armor"),
     WEAPON("weapon");
