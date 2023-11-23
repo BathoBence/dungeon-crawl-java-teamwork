@@ -6,6 +6,7 @@ public enum CellType {
     WALL("wall"),
     POTION("potion"),
     DOOR("door"),
+    SHOPFLOOR("shop-floor"),
 
     WARNING("!"),
     CORPSE("corpse");

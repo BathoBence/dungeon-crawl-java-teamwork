@@ -58,4 +58,8 @@ public class GameMap {
         }
         return skeletons;
     }
+
+    public boolean getMapType() {
+        return true;
+    }
 }
