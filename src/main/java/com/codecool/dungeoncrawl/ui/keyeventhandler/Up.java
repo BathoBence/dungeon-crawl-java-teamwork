@@ -8,15 +8,16 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.Set;
 
-public class Up implements KeyHandler {
+public class Up implements KeyHandler{
     public static final KeyCode code = KeyCode.UP;
 
     public void perform(KeyEvent event, GameMap map) {
         if (code.equals(event.getCode())) {
             map.getPlayer().move(0, -1);
+            map.getPlayer().attack();
             Set<Actor> skeletons = map.getSkeletons();
             for (Actor skeleton : skeletons) {
-                skeleton.moveRandomDirection();
+                skeleton.moveRandomDirection(map.getPlayer());
             }
         }
     }

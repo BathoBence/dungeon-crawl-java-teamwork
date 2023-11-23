@@ -3,10 +3,8 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.ui.UI;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.*;
 import javafx.application.Application;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
-import java.util.Objects;
 import java.util.Set;
 
 public class Game extends Application {
@@ -27,7 +25,6 @@ public class Game extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
-
         setTimeout(() -> System.out.println("test"), 1000);
     }
 

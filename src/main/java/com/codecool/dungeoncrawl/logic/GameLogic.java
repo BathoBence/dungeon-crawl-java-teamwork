@@ -11,7 +11,7 @@ public class GameLogic {
     }
 
     public void setMap(GameMap map) {
-        this.map = map  ;
+        this.map = map;
     }
 
     public double getMapWidth() {
@@ -33,8 +33,8 @@ public class GameLogic {
         return Integer.toString(map.getPlayer().getHealth());
     }
 
-    public String getPlayerGold() {
-        return Integer.toString(map.getPlayer().getGold());
+    public String getPlayerGold(){
+        return String.valueOf(map.getPlayer().getGold());
     }
 
 

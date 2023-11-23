@@ -10,6 +10,8 @@ import javafx.scene.media.AudioClip;
 
 import java.awt.event.KeyEvent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -63,30 +65,51 @@ public abstract class Actor implements Drawable {
     public void increaseHealth(int bonusHealth) {
         this.health = health + bonusHealth;
     }
+
+    public int takingDamage(int damage){
+        this.health -= damage;
+        if(this.health <=0){
+            this.getCell().setActor(null);
+            this.getCell().setType(CellType.CORPSE);
+            return health;
+        }
+        return health;
+    }
     public void increaseGold(int bonusGold) {
         this.gold = gold + bonusGold;
     }
 
-    public void moveRandomDirection(){
+    public void moveRandomDirection(Actor player){
         Random random = new Random();
         int randomInt = random.nextInt(4);
-        switch (randomInt+1){
-            case 1:
-                //Up
-                this.move(0,-1);
-                break;
-            case 2:
-                //Down
-                this.move(0,1);
-                break;
-            case 3:
-                //Right
-                this.move(1,0);
-                break;
-            case 4:
-                //Left
-                this.move(-1,0);
-                break;
+        if(!isPlayerNearby(this)) {
+            switch (randomInt + 1) {
+                case 1:
+                    //Up
+                    this.move(0, -1);
+                    break;
+                case 2:
+                    //Down
+                    this.move(0, 1);
+                    break;
+                case 3:
+                    //Right
+                    this.move(1, 0);
+                    break;
+                case 4:
+                    //Left
+                    this.move(-1, 0);
+                    break;
+            }
+        } else {
+            player.takingDamage(2);
         }
-    };
+    }
+
+    public boolean isPlayerNearby(Actor skeleton){
+        return (skeleton.getCell().getNeighbor(1, 0).getActor() != null && skeleton.getCell().getNeighbor(1, 0).getActor().getTileName().equals("player")) ||
+                (skeleton.getCell().getNeighbor(-1, 0).getActor() != null && skeleton.getCell().getNeighbor(-1, 0).getActor().getTileName().equals("player")) ||
+                (skeleton.getCell().getNeighbor(0, 1).getActor() != null && skeleton.getCell().getNeighbor(0, 1).getActor().getTileName().equals("player")) ||
+                skeleton.getCell().getNeighbor(0, -1).getActor() != null && skeleton.getCell().getNeighbor(0, -1).getActor().getTileName().equals("player");
+    }
 }
