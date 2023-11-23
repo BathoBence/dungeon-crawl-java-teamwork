@@ -31,10 +31,12 @@ public class UI {
                 logic.getMapWidth() * Tiles.TILE_WIDTH,
                 logic.getMapHeight() * Tiles.TILE_WIDTH);
         this.logic = logic;
-        // logic.getMap().getPlayer().setPlayerName(playerName);
         this.context = canvas.getGraphicsContext2D();
         this.mainStage = new MainStage(canvas);
         mainStage.setPlayerNameText(playerName);
+        if (logic.getMap().getMapType()) {
+        mainStage.setMerchantText(" ");
+        }
         this.keyHandlers = keyHandlers;
     }
 
@@ -48,7 +50,7 @@ public class UI {
 
     private void onKeyPressed(KeyEvent keyEvent) {
         for (KeyHandler keyHandler : keyHandlers) {
-            moveSound.play();
+            //moveSound.play();
             keyHandler.perform(keyEvent, logic);
         }
         refresh();
@@ -57,6 +59,7 @@ public class UI {
     public void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+         mainStage.setMerchantText(logic.getMapType().getLabel());
         for (int x = 0; x < logic.getMapWidth(); x++) {
             for (int y = 0; y < logic.getMapHeight(); y++) {
                 Cell cell = logic.getCell(x, y);
@@ -66,6 +69,10 @@ public class UI {
                     }
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else {
+                    if (cell.getType().getTileName().equalsIgnoreCase("weapon")){
+                        Tiles.drawTile(context,"gold",x, y - 1);
+                        System.out.println("hi gold");
+                    }
                     Tiles.drawTile(context, cell, x, y);
                 }
             }

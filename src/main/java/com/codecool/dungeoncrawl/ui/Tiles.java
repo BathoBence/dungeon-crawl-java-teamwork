@@ -23,10 +23,13 @@ public class Tiles {
     }
 
     static {
-        tileMap.put("empty", new Tile(0, 0));
+        tileMap.put("empty", new Tile(6, 0));
         tileMap.put("wall", new Tile(10, 17));
         tileMap.put("floor", new Tile(2, 0));
-        tileMap.put("player", new Tile(27, 0));
+        tileMap.put("player", new Tile(25, 0));
+        tileMap.put("player2", new Tile(27,0));
+        tileMap.put("player3", new Tile(30,0));
+        tileMap.put("player4", new Tile(28,0));
         tileMap.put("skeleton", new Tile(29, 6));
         tileMap.put("potion", new Tile(23,23));
         tileMap.put("door", new Tile(6,5));
@@ -36,6 +39,9 @@ public class Tiles {
         tileMap.put("corpse", new Tile(0,15));
         tileMap.put("boss", new Tile(25,8));
         tileMap.put("!",new Tile(20,27));
+        tileMap.put("armor", new Tile(2,22));
+        tileMap.put("weapon", new Tile(0,30));
+        tileMap.put("gold", new Tile(9,25));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
@@ -46,8 +52,6 @@ public class Tiles {
 
     public static void drawTile(GraphicsContext context, String s, int x, int y) {
         Tile tile = tileMap.get(s);
-        System.out.println(x);
-        System.out.println(y);
         context.drawImage(tileset, tile.x, tile.y, tile.w, tile.h,
                 x * TILE_WIDTH, y * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
     }

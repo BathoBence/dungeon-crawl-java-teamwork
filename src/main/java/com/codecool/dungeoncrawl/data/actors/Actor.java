@@ -17,7 +17,7 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
 
-    private int gold = 0;
+    private int gold = 500;
 
     private boolean enemy = true;
 
@@ -73,6 +73,10 @@ public abstract class Actor implements Drawable {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public void removeGold(int goldToRemove) {
+        this.gold = gold - goldToRemove;
     }
 
 

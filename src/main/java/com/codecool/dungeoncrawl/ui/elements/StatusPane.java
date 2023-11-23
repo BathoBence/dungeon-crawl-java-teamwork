@@ -11,6 +11,7 @@ public class StatusPane {
     private GridPane ui;
 
     private Label playerName;
+    private Label merchantTextLabel;
     private Label healthTextLabel;
     private Label healthValueLabel;
     private Label goldTextLabel;
@@ -24,6 +25,7 @@ public class StatusPane {
         healthValueLabel = new Label();
         goldTextLabel = new Label("Gold: ");
         goldValueLabel = new Label();
+        merchantTextLabel = new Label();
     }
 
     public BorderPane build() {
@@ -36,6 +38,7 @@ public class StatusPane {
         ui.add(healthValueLabel, 1, 1);
         ui.add(goldTextLabel, 0, 2);
         ui.add(goldValueLabel, 1, 2);
+        ui.add(merchantTextLabel, 0, 3);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -52,5 +55,9 @@ public class StatusPane {
 
     public void setPlayerName(String text) {
         playerName.setText(text);
+    }
+
+    public void setMerchantText(String text) {
+        merchantTextLabel.setText(text);
     }
 }

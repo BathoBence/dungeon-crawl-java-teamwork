@@ -7,9 +7,12 @@ public enum CellType {
     POTION("potion"),
     DOOR("door"),
     SHOPFLOOR("shop-floor"),
-
     WARNING("!"),
     CORPSE("corpse");
+    CORPSE("corpse"),
+    ARMOR("armor"),
+    WEAPON("weapon");
+
 
     private final String tileName;
 
