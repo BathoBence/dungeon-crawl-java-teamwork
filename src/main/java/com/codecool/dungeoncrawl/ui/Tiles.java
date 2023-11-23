@@ -37,6 +37,8 @@ public class Tiles {
         tileMap.put("quest-icon", new Tile(20, 25));
         tileMap.put("shop-floor", new Tile(16, 0));
         tileMap.put("corpse", new Tile(0,15));
+        tileMap.put("boss", new Tile(25,8));
+        tileMap.put("!",new Tile(20,27));
         tileMap.put("armor", new Tile(2,22));
         tileMap.put("weapon", new Tile(0,30));
         tileMap.put("gold", new Tile(9,25));

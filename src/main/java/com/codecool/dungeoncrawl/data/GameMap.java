@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Boss;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 
@@ -57,6 +58,18 @@ public class GameMap {
             }
         }
         return skeletons;
+    }
+
+    public Actor getBoss(){
+        for(int x = 0; x < width; x++){
+            for(int y = 0; y < height; y++){
+                Cell cell = getCell(x,y);
+                if(cell.getActor()!= null && cell.getActor().getTileName().equals("boss")){
+                   return cell.getActor();
+                }
+            }
+        }
+        return null;
     }
 
     public boolean getMapType() {

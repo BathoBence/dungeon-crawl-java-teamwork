@@ -3,11 +3,13 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Boss;
 import com.codecool.dungeoncrawl.data.actors.Merchant;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.data.items.Armor;
 import com.codecool.dungeoncrawl.data.items.Door;
+import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.Potion;
 import com.codecool.dungeoncrawl.data.items.Weapon;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
@@ -60,6 +62,13 @@ public class MapLoader {
                         case 'D':
                             cell.setType(CellType.DOOR);
                             new Door(cell);
+                            break;
+                        case 'B':
+                            cell.setType(CellType.FLOOR);
+                            new Boss(cell);
+                            break;
+                        case '!':
+                            cell.setType((CellType.WARNING));
                             break;
                         case 'M':
                             cell.setType(CellType.FLOOR);

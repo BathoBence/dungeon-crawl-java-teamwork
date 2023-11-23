@@ -6,6 +6,7 @@ public class Merchant extends Actor{
 
     public Merchant(Cell cell) {
         super(cell);
+        this.setFriendly();
     }
 
     @Override
