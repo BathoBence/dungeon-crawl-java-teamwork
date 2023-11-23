@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.ui.elements.MapTypes;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.media.AudioClip;
@@ -16,7 +17,7 @@ public class Space implements KeyHandler {
 
     @Override
     public void perform(KeyEvent event, GameLogic logic) {
-        if (code.equals(event.getCode())){
+        if (code.equals(event.getCode())) {
             if (logic.getMap().getPlayer().getCell().getType() == CellType.POTION) {
                 logic.getMap().getPlayer().increaseHealth(10);
 
@@ -25,12 +26,24 @@ public class Space implements KeyHandler {
                 potionSound.play();
                 System.out.println("potion");
                 logic.getMap().getPlayer().getCell().setType(CellType.FLOOR);
+            } else if (logic.getMap().getPlayer().getCell().getType() == CellType.DOOR) {
+                logic.setMap();
+            } else if (logic.getMap().getPlayer().getCell().getType() == CellType.WEAPON) {
+                if (logic.getMap().getPlayer().getGold() > 50) {
+                    logic.getMap().getPlayer().equipWeapon();
+                    logic.getMap().getPlayer().removeGold(50);
+                }
+
             }
-            else if (logic.getMap().getPlayer().getCell().getType() == CellType.DOOR) {
-                    logic.setMap();
-                System.out.println("hi");
+            else if (logic.getMap().getPlayer().getCell().getType() == CellType.ARMOR) {
+                if (logic.getMap().getPlayer().getGold() > 50) {
+                    logic.getMap().getPlayer().equipArmor();
+                    logic.getMap().getPlayer().increaseHealth(30);
+                    System.out.println(logic.getMap().getPlayer().isArmorEquipped());
+                    logic.getMap().getPlayer().removeGold(50);
                 }
             }
+        }
     }
 }
 

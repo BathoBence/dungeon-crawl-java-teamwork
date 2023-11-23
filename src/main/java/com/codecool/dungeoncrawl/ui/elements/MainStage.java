@@ -15,7 +15,7 @@ public class MainStage {
         scene = setUpScene();
     }
 
-    private Scene setUpScene() {
+    public Scene setUpScene() {
         BorderPane borderPane = statusPane.build();
         borderPane.setCenter(canvas);
         Scene scene = new Scene(borderPane);
@@ -32,7 +32,15 @@ public class MainStage {
         this.statusPane.setGoldValue(text);
     }
 
+    public StatusPane getStatusPane() {
+        return statusPane;
+    }
+
     public void setPlayerNameText(String playerName) {
         this.statusPane.setPlayerName(playerName);
+    }
+
+    public void setMerchantText(String text) {
+        this.statusPane.setMerchantText(text);
     }
 }

@@ -8,12 +8,35 @@ import java.util.List;
 import java.util.Random;
 
 public class Player extends Actor {
+
+    private boolean isArmorEquipped;
+
+    private boolean isWeaponEquipped;
     public Player(Cell cell) {
         super(cell);
+        isArmorEquipped = false;
+        isWeaponEquipped = false;
     }
 
-    public String getTileName() {
+    public String getTileName()
+    {
+        if (isWeaponEquipped && isArmorEquipped) {
+            return "player4";
+        } else if (isArmorEquipped) {
+            return "player3";
+        } else if (isWeaponEquipped) {
+            return "player2";
+        } else {
         return "player";
+        }
+    }
+
+    public void equipArmor() {
+        isArmorEquipped = true;
+    }
+
+    public void equipWeapon() {
+        isWeaponEquipped = true;
     }
 
     public void attack(){
@@ -49,4 +72,11 @@ public class Player extends Actor {
         return enemies;
     }
 
+    public boolean isArmorEquipped() {
+        return isArmorEquipped;
+    }
+
+    public boolean isWeaponEquipped() {
+        return isWeaponEquipped;
+    }
 }
