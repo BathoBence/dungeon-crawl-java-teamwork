@@ -30,8 +30,11 @@ public class GameLogic {
     }
 
     public String getPlayerHealth() {
-        return "10";
-        //return Integer.toString(map.getPlayer().getHealth());
+        return Integer.toString(map.getPlayer().getHealth());
+    }
+
+    public String getPlayerGold(){
+        return String.valueOf(map.getPlayer().getGold());
     }
 
 
